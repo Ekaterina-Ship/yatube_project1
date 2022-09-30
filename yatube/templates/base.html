@@ -19,11 +19,14 @@
     <header>
       {% include 'includes/header.html' %}
     </header>
-    <main> 
-    {% block content %}
-        Контент не подвезли :(
-    {% endblock %}
-
+    <main>
+      <div class="container">
+          {% block content %}
+          <div class="container">
+            Контент не подвезли.
+          </div>
+          {% endblock %}
+      </div>
     </main>
     <!-- Использованы классы бустрапа: -->
     <!-- border-top: создаёт тонкую линию сверху блока -->
