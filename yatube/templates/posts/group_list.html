@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
-{% block title %} Записи сообщества Лев Толстой – зеркало русской революции{% endblock %}
+{% block title %}{{ group.title }}{% endblock %}
 {% block content %}
-<div class="container">
-  <h1>Лев Толстой – зеркало русской революции.</h1>
+  <h1>{{ group.title }}</h1>
+  <p>
+    {{ group.description }}
+  </p>
+  {% for post in page_obj %}
     <article>
-      {% for post in posts %}
       <ul>
         <li>
           Автор: {{ post.author.get_full_name }}
@@ -15,8 +17,8 @@
       </ul>
       <p>{{ post.text }}</p>
       {% if not forloop.last %}<hr>{% endif %}
-      {% endfor %}
-    </article>
+      <article>
+    {% endfor %}
     <hr>
-</div>
+  {% include 'posts/includes/paginator.html' %}
 {% endblock %}
